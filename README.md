@@ -1,83 +1,55 @@
-## Ready Server :::::
+# Antopolis-server
 
-## Ready with esliint ,logger ,global errorhandle , uncaught error,Zod
+## Server Overview
 
-\*\* just clone the server for >>>>
+Antopolis-server is a server-side application designed to manage animal and category relations. It provides CRUD operations for animals and categories, with image upload and processing capabilities. also implement authentication by JWT and cookie parser for login/signup
 
-### Features of src>app>modules>AUTH> :::
+## Used Technologies
 
-** User Login
-** User Signup
-\*\* Get refresh token
+- TypeScript
+- Mongoose (MongoDB ORM)
+- JWT (JSON Web Tokens) for authentication
+- Husky (Git hooks)
+- Prettier (Code formatting)
+- Express.js (Backend framework)
+- Multer (File upload handling)
+- Sharp (Image processing)
 
-### Features of src>app>modules>USER(by admin ) :::
+## API Endpoints
 
-** create user
-** user profile (any user)
-** update profile (any user)
-** update user (admin)
-** allUser (admin)
-** delete user (admin)
-\*\* get single user (admin )
+- **Image Operations**
 
-### .env (sample just )
+  - `POST /api/v1/image` - Upload an image
+  - `GET /api/v1/image/:id` - Retrieve an image by ID
 
-    DB_URL='mongodb+sdfasdfawrfqawe1ertwer5454634534352345'
-    NODE_ENV= development
-    PORT = 5000
+- **Category Operations**
 
+  - `GET /api/v1/category` - Retrieve all categories
+  - `GET /api/v1/category/:id` - Retrieve a category by ID
+  - `POST /api/v1/category` - Create a new category
+  - `PUT /api/v1/category/:id` - Update a category by ID
+  - `DELETE /api/v1/category/:id` - Delete a category by ID
 
-    JWT_SECRET = 'type_secret'
-    JWT_EXPIRES_IN=1d
-    JWT_REFRESH_SECRET='very-refresh-secret'
-    JWT_REFRESH_EXPIRES_IN=365d
+- **Animal Operations**
+  - `GET /api/v1/animal` - Retrieve all animals
+  - `GET /api/v1/animal/:id` - Retrieve an animal by ID
+  - `POST /api/v1/animal` - Create a new animal
+  - `PUT /api/v1/animal/:id` - Update an animal by ID
+  - `DELETE /api/v1/animal/:id` - Delete an animal by ID
 
-## Vercel hosting the server
+## Features
 
-### Vercel এ ডেপ্লয় এর ক্ষেত্রে কয়েকটি জিনিস খেয়ালরাখতে হবে Sits config.jso ("./dist" is very important)
+- **Image Management**
 
-    "module": "commonjs" / Specify what module code is generated. */*,
+  - Upload and retrieve images with automatic resizing and processing using Sharp.
 
-    "rootDir": "./src" / Specify the root folder
+- **Category Management**
 
-    within your source files. /*, "outDir": "./dist" */ Specify an output folder
+  - Perform CRUD operations on categories, including creation, retrieval, update, and deletion.
 
-    for all emitted files. */*,
+- **Animal Management**
+  - Manage animals with relationships to categories, allowing CRUD operations for animals linked to specific categories.
 
-### এই কনফিগটি add করে নিতে হবে যদি আগে থেকে করা না থাকে
+---
 
-### ২। package.json এর মধ্যে
-
-        "scripts": {
-
-        "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-
-        "start": "node dist/server.js",
-
-        "build": "tsc"
-        }
-
-### ৩। প্রজেক্টের রুট এর মধ্যে vercel.json ফাইল বানিইয়ে নিতে হবে
-
-        {
-
-            "version": 2,
-            "builds": [
-                {
-                    "src": "dist/server.js",
-                    "use": "@vercel/node"
-                }
-            ],
-            "routes": [
-                {
-                    "src": "/(.*)",
-                    "dest": "dist/server.js"
-                }
-            ]
-        }
-
-### এরপর Cli দিয়ে deploy করে নিলেই কাজ শেষ
-
-             tsc
-             vercel
-             vercel --prod
+@sarwarasik
