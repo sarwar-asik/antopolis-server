@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AnimalService = void 0;
 const animal_model_1 = require("./animal.model");
 const create_animal_db = (payload) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield animal_model_1.Animal_model.create(payload);
+    const result = (yield animal_model_1.Animal_model.create(payload)).populate('category_id');
     return result;
 });
 const get_all_animal_db = () => __awaiter(void 0, void 0, void 0, function* () {

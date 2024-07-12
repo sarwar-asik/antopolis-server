@@ -37,10 +37,11 @@ const getImageUrl = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     console.log('get image hit');
     let fileId = req.params.id;
     fileId = fileId.replace(/\.[^/.]+$/, '');
+    console.log(fileId, 'fileId');
     // const pipeline = [{ $match: { _id: new ObjectId(fileId) } }];
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const fileDoc = (yield image_model_1.Image_model.findById(fileId));
-    console.log('🚀 image.controller.ts:32', fileDoc);
+    // console.log('🚀 image.controller.ts:32', fileDoc);
     if (!fileDoc) {
         (0, sendResponce_1.default)(res, {
             statusCode: http_status_1.default.NOT_FOUND,
@@ -51,6 +52,7 @@ const getImageUrl = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     }
     else {
         const fileType = fileDoc.fileType;
+        console.log("🚀 ~ fileType:", fileType);
         const contentType = fileType === 'jpg' ? 'image/jpeg' : 'application/pdf';
         // Implement compression and optimization
         let imageBuffer = Buffer.from(fileDoc.buffer, 'base64');
@@ -62,14 +64,24 @@ const getImageUrl = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         }
         // Set the content type and status manually, as sendResponse can't handle binary data directly
         res.contentType(contentType);
-        // res.status(httpStatus.OK).send(imageBuffer);
+        res.status(http_status_1.default.OK).send(imageBuffer);
         // res.status(200).send(imageBuffer);
-        (0, sendResponce_1.default)(res, {
-            statusCode: http_status_1.default.OK,
-            success: true,
-            message: 'Image get successfully',
-            data: imageBuffer,
-        });
+        // sendResponse(res, {
+        //   statusCode: httpStatus.OK,
+        //   success: true,
+        //   message: 'Image get successfully',
+        //   data: imageBuffer,
+        // });
     }
 });
-exports.ImageController = { create_image, getImageUrl };
+const getAllImage = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log('get all image hit');
+    const response = yield image_model_1.Image_model.find({});
+    (0, sendResponce_1.default)(res, {
+        statusCode: http_status_1.default.OK,
+        success: true,
+        message: 'image retrieved successfully',
+        data: response,
+    });
+});
+exports.ImageController = { create_image, getImageUrl, getAllImage };

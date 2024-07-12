@@ -23,6 +23,7 @@ const sendResponce_1 = __importDefault(require("./shared/sendResponce"));
 // import { generateFacultyId } from './app/modules/users/user.utils';
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const config_1 = __importDefault(require("./config"));
+const image_controller_1 = require("./app/modules/Image/image.controller");
 // import { createUser } from './app/modules/users/users.services'
 const app = (0, express_1.default)();
 // const port = 3000
@@ -45,6 +46,7 @@ app.use(express_1.default.urlencoded({ extended: true }));
 // app.use("/api/v1/semester",semesterRouter)
 //*** */ or ***////
 app.use('/api/v1', routes_1.default);
+app.use('/image/:id', image_controller_1.ImageController.getImageUrl);
 app.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     //  const addUser = await createUser({id:"445",role:"admin",password:"asdfasdf"})
     // res.send(addUser)

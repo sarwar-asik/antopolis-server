@@ -7,6 +7,9 @@ const create_Animal = zod_1.z.object({
         title: zod_1.z.string({
             required_error: 'title is Required (zod)',
         }),
+        img: zod_1.z.string({
+            required_error: 'img is Required (zod)',
+        }),
         category_id: zod_1.z.string({
             required_error: 'category_id is Required (zod)',
         }),

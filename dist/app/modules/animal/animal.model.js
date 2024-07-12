@@ -5,6 +5,7 @@ const mongoose_1 = require("mongoose");
 const mongoose_2 = require("mongoose");
 const AnimalSchema = new mongoose_1.Schema({
     title: { type: String, required: true },
+    img: { type: String, required: true },
     category_id: {
         type: mongoose_1.Schema.Types.ObjectId,
         ref: 'Category',

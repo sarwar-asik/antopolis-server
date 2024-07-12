@@ -19,7 +19,7 @@ const image_model_1 = require("./image.model");
 const create_image_db = (bufferFile, fileType) => __awaiter(void 0, void 0, void 0, function* () {
     const payload = { buffer: bufferFile, fileType };
     const result = yield image_model_1.Image_model.create(payload);
-    const image_User = `${config_1.default.server_url}/image/${result._id}/${result.id}.${fileType}`;
+    const image_User = `${config_1.default.server_url}/image/${result._id}.${fileType}`;
     return image_User;
 });
 // const getImageUrl = async (id: string): Promise<string> => {
