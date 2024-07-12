@@ -1,4 +1,3 @@
-
 import { Schema } from 'mongoose';
 import { IAnimal } from './animal.interface';
 import { model } from 'mongoose';
@@ -6,8 +5,11 @@ import { model } from 'mongoose';
 const AnimalSchema: Schema<IAnimal> = new Schema<IAnimal>(
   {
     title: { type: String, required: true },
-     userId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-  
+    category_id: {
+      type: Schema.Types.ObjectId,
+      ref: 'Category',
+      required: true,
+    },
   },
   {
     timestamps: true,
@@ -17,4 +19,4 @@ const AnimalSchema: Schema<IAnimal> = new Schema<IAnimal>(
   }
 );
 
-export const Animal_model = model<IAnimal>('Animal',  AnimalSchema);
+export const Animal_model = model<IAnimal>('Animal', AnimalSchema);

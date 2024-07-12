@@ -4,6 +4,7 @@ import { UserRouter } from '../modules/USER/user.route';
 import { ImageRoutes } from '../modules/Image/image.route';
 import { AuthRouter } from '../modules/AUTH/auth.route';
 import { CategoryRoutes } from '../modules/category/category.route';
+import { AnimalRoutes } from '../modules/animal/animal.route';
 
 const router = express.Router();
 
@@ -23,6 +24,10 @@ const modulesRoutes = [
   {
     path: '/category',
     route: CategoryRoutes,
+  },
+  {
+    path: '/animal',
+    route: AnimalRoutes,
   },
 ];
 

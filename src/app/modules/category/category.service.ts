@@ -11,10 +11,10 @@ const get_all_category_db = async (): Promise<ICategory[]> => {
   const resultDB = await Category_model.aggregate([
     {
       $lookup: {
-        from: 'animal',
+        from: 'animals',
         localField: '_id',
         foreignField: 'category_id',
-        as: 'animal',
+        as: 'animals',
       },
     },
   ]);
