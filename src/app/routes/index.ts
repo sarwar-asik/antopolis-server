@@ -1,7 +1,8 @@
 import express from 'express';
 import { UserRouter } from '../modules/USER/user.route';
-import { AuthRouter } from '../modules/AUTH/auth.route';
+
 import { ImageRoutes } from '../modules/Image/image.route';
+import { AuthRouter } from '../modules/AUTH/auth.route';
 
 const router = express.Router();
 
