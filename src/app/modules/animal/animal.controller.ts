@@ -28,13 +28,13 @@ const get_all_animal = async (req: Request, res: Response) => {
 };
 
 const get_all_animal_by_category = async (req: Request, res: Response) => {
-  const category_id = req.query.category_id as string;
+  const category_id = req.params.category_id as string;
   const response = await AnimalService.get_animal_by_category_db(category_id);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'animal retrieved successfully',
+    message: 'Category animal retrieved successfully',
     data: response,
   });
 };

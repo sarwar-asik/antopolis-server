@@ -16,7 +16,10 @@ const get_all_animal_db = async (): Promise<IAnimal[]> => {
 const get_animal_by_category_db = async (
   category_id: string
 ): Promise<IAnimal[]> => {
-  const resultDB = await Animal_model.find({ category_id });
+  // console.log(category_id, 'category_id');
+  const resultDB = await Animal_model.find({ category_id }).populate(
+    'category_id'
+  );
   return resultDB;
 };
 export const AnimalService = {

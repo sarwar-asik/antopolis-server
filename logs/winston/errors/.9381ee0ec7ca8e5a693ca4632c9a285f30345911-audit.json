@@ -1,0 +1,20 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 5
+    },
+    "auditLog": "/home/sarwar/WEB/JOB/Task/Antopolis/antopolis-server/logs/winston/errors/.9381ee0ec7ca8e5a693ca4632c9a285f30345911-audit.json",
+    "files": [
+        {
+            "date": 1720774088358,
+            "name": "/home/sarwar/WEB/JOB/Task/Antopolis/antopolis-server/logs/winston/errors/ph-error-2024-07-12-14-error.log",
+            "hash": "2ede3b872c0902e1d3d74eb941ad96348296bb7888ca1c0f891b794bd8de4bb5"
+        },
+        {
+            "date": 1720774850140,
+            "name": "/home/sarwar/WEB/JOB/Task/Antopolis/antopolis-server/logs/winston/errors/ph-error-2024-07-12-15-error.log",
+            "hash": "f4348f13a8e03400eedd012110fdd51e0ca4a1dd8bfd49c5662b7d99e654ab28"
+        }
+    ],
+    "hashType": "sha256"
+}

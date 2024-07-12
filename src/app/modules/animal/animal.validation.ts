@@ -1,7 +1,7 @@
 import { z } from 'zod';
 const create_Animal = z.object({
   body: z.object({
-    title: z.number({
+    title: z.string({
       required_error: 'title is Required (zod)',
     }),
     category_id: z.string({
