@@ -21,7 +21,12 @@ const get_all_animal_db = () => __awaiter(void 0, void 0, void 0, function* () {
 });
 const get_animal_by_category_db = (category_id) => __awaiter(void 0, void 0, void 0, function* () {
     // console.log(category_id, 'category_id');
-    const resultDB = yield animal_model_1.Animal_model.find({ category_id }).populate('category_id');
+    const query = {};
+    if (category_id !== 'all') {
+        query.category_id = category_id;
+    }
+    // console.log(query, 'query');
+    const resultDB = yield animal_model_1.Animal_model.find(query).populate('category_id');
     return resultDB;
 });
 exports.AnimalService = {
