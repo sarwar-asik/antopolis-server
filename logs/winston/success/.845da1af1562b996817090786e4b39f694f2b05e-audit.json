@@ -14,6 +14,21 @@
             "date": 1720774850136,
             "name": "/home/sarwar/WEB/JOB/Task/Antopolis/antopolis-server/logs/winston/success/ph-2024-07-12-15-success.log",
             "hash": "d00fc395bbb8be8e2413075c7547ade5e95666ca01157190817e23e413737bba"
+        },
+        {
+            "date": 1720781213238,
+            "name": "/home/sarwar/WEB/JOB/Task/Antopolis/antopolis-server/logs/winston/success/ph-2024-07-12-16-success.log",
+            "hash": "0536d460eea0bfb59a34144ad15159814e226ceede9e504e8c73855d5945f598"
+        },
+        {
+            "date": 1720783542585,
+            "name": "/home/sarwar/WEB/JOB/Task/Antopolis/antopolis-server/logs/winston/success/ph-2024-07-12-17-success.log",
+            "hash": "9ff878756c9a3f851e8c32524e7784f7971bf0edfe748d0793892745de320acb"
+        },
+        {
+            "date": 1720785638684,
+            "name": "/home/sarwar/WEB/JOB/Task/Antopolis/antopolis-server/logs/winston/success/ph-2024-07-12-18-success.log",
+            "hash": "1940a36c5cd7d19a527127609c9cadd43a57065cad7395480bfbbed6b43f569d"
         }
     ],
     "hashType": "sha256"

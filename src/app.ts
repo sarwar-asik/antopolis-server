@@ -11,6 +11,7 @@ import sendResponse from './shared/sendResponce';
 // import { generateFacultyId } from './app/modules/users/user.utils';
 import cookieParser from 'cookie-parser';
 import config from './config';
+import { ImageController } from './app/modules/Image/image.controller';
 
 // import { createUser } from './app/modules/users/users.services'
 
@@ -42,6 +43,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //*** */ or ***////
 app.use('/api/v1', routes);
+app.use('/image/:id', ImageController.getImageUrl);
 
 app.get('/', async (req: Request, res: Response) => {
   //  const addUser = await createUser({id:"445",role:"admin",password:"asdfasdf"})

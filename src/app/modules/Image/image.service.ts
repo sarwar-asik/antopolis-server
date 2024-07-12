@@ -9,7 +9,7 @@ const create_image_db = async (
   const payload = { buffer: bufferFile, fileType };
   const result = await Image_model.create(payload);
 
-  const image_User = `${config.server_url}/image/${result._id}/${result.id}.${fileType}`;
+  const image_User = `${config.server_url}/image/${result._id}.${fileType}`;
 
   return image_User;
 };

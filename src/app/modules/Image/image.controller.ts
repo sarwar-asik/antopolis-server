@@ -27,11 +27,13 @@ const getImageUrl = async (req: Request, res: Response) => {
   let fileId = req.params.id;
   fileId = fileId.replace(/\.[^/.]+$/, '');
 
+  console.log(fileId, 'fileId');
+
   // const pipeline = [{ $match: { _id: new ObjectId(fileId) } }];
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const fileDoc = (await Image_model.findById(fileId)) as any;
-  console.log('🚀 image.controller.ts:32', fileDoc);
+  // console.log('🚀 image.controller.ts:32', fileDoc);
 
   if (!fileDoc) {
     sendResponse(res, {
@@ -42,6 +44,7 @@ const getImageUrl = async (req: Request, res: Response) => {
     });
   } else {
     const fileType = fileDoc.fileType;
+    console.log("🚀 ~ fileType:", fileType)
     const contentType = fileType === 'jpg' ? 'image/jpeg' : 'application/pdf';
 
     // Implement compression and optimization
@@ -54,15 +57,26 @@ const getImageUrl = async (req: Request, res: Response) => {
 
     // Set the content type and status manually, as sendResponse can't handle binary data directly
     res.contentType(contentType);
-    // res.status(httpStatus.OK).send(imageBuffer);
+    res.status(httpStatus.OK).send(imageBuffer);
     // res.status(200).send(imageBuffer);
-    sendResponse(res, {
-      statusCode: httpStatus.OK,
-      success: true,
-      message: 'Image get successfully',
-      data: imageBuffer,
-    });
+    // sendResponse(res, {
+    //   statusCode: httpStatus.OK,
+    //   success: true,
+    //   message: 'Image get successfully',
+    //   data: imageBuffer,
+    // });
   }
 };
 
-export const ImageController = { create_image, getImageUrl };
+const getAllImage = async (req: Request, res: Response) => {
+  console.log('get all image hit');
+  const response = await Image_model.find({});
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'image retrieved successfully',
+    data: response,
+  });
+};
+
+export const ImageController = { create_image, getImageUrl, getAllImage };

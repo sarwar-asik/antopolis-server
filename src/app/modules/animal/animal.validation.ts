@@ -4,6 +4,9 @@ const create_Animal = z.object({
     title: z.string({
       required_error: 'title is Required (zod)',
     }),
+    img: z.string({
+      required_error: 'img is Required (zod)',
+    }),
     category_id: z.string({
       required_error: 'category_id is Required (zod)',
     }),

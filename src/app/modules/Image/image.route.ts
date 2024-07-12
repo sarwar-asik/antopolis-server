@@ -14,7 +14,7 @@ const upload = multer({
   // }
 });
 
-router.get('/get/:id', ImageController.getImageUrl);
+router.get('/:id', ImageController.getImageUrl);
 router.put('/upload', upload.single('image'), ImageController.create_image);
 
 export const ImageRoutes = router;
