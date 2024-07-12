@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { IAnimal } from './animal.interface';
 import { Animal_model } from './animal.model';
 
@@ -17,9 +18,12 @@ const get_animal_by_category_db = async (
   category_id: string
 ): Promise<IAnimal[]> => {
   // console.log(category_id, 'category_id');
-  const resultDB = await Animal_model.find({ category_id }).populate(
-    'category_id'
-  );
+  const query = {} as any;
+  if (category_id !== 'all') {
+    query.category_id = category_id;
+  }
+  // console.log(query, 'query');
+  const resultDB = await Animal_model.find(query).populate('category_id');
   return resultDB;
 };
 export const AnimalService = {
