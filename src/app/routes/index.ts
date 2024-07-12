@@ -3,6 +3,7 @@ import { UserRouter } from '../modules/USER/user.route';
 
 import { ImageRoutes } from '../modules/Image/image.route';
 import { AuthRouter } from '../modules/AUTH/auth.route';
+import { CategoryRoutes } from '../modules/category/category.route';
 
 const router = express.Router();
 
@@ -18,6 +19,10 @@ const modulesRoutes = [
   {
     path: '/image',
     route: ImageRoutes,
+  },
+  {
+    path: '/category',
+    route: CategoryRoutes,
   },
 ];
 

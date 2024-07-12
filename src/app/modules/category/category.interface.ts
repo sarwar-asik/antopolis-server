@@ -1,9 +1,9 @@
 
-import { Model, ObjectId } from "mongoose";
+import { Model } from "mongoose";
 
-    export type ICategory ={
-      name: string;
-      userId:ObjectId
-    }
+    export type ICategory = {
+  
+      title: string;
+    };
 
 export type Category = Model<ICategory,Record<string,unknown>>
