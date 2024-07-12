@@ -14,7 +14,10 @@ const modulesRoutes = [
     path: '/users',
     route: UserRouter,
   },
- 
+  {
+    path: '/image',
+    route: ImageRoutes,
+  },
 ];
 
 modulesRoutes.forEach(route => router.use(route.path, route.route));
