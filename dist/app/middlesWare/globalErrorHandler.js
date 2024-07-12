@@ -55,6 +55,6 @@ const GlobalHandler = (error, req, res, next) => {
         errorMessage,
         stack: index_1.default.env !== 'production' ? error === null || error === void 0 ? void 0 : error.stack : undefined,
     });
-    // next()
+    next();
 };
 exports.default = GlobalHandler;

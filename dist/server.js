@@ -12,51 +12,40 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-/* eslint-disable no-unused-expressions */
 /* eslint-disable no-console */
 const mongoose_1 = __importDefault(require("mongoose"));
 // import config from './config/index.js';
 require("colors");
 // import { logger, errorLogger } from './shared/logger';
 const app_1 = __importDefault(require("./app"));
-// import config from './config';
-const logger_1 = require("./shared/logger");
-const index_1 = __importDefault(require("./config/index"));
-mongoose_1.default.set('strictQuery', false);
-process.on('uncaughtException', error => {
-    index_1.default.env === 'production'
-        ? logger_1.errorLogger.error(error)
-        : console.log('uncaugthException is detected ......', error);
+const config_1 = __importDefault(require("./config"));
+process.on('uncaughtException', err => {
+    console.log('UnCaught rejection is detected from serve.ts', err);
     process.exit(1);
 });
 let server;
-// console.log(config.data_url, 'config file Data'.red.bold);
-function connection() {
+console.log(config_1.default.database_url, 'config file Data'.red.bold);
+function mainFUnction() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            yield mongoose_1.default.connect(index_1.default.database_url, {
+            yield mongoose_1.default.connect(config_1.default.database_url, {
                 dbName: 'Antopolis-Server',
             });
-            index_1.default.env === 'production'
-                ? logger_1.logger.info(`Database connection successful`.green.underline.bold)
-                : console.log(`Database connection successful`.green.underline.bold);
-            app_1.default.listen(index_1.default.port, () => {
-                index_1.default.env === 'production'
-                    ? logger_1.logger.info(`Server is listening on port ${index_1.default.port}`.red.underline.bold)
-                    : console.log(`Server is listening on port ${index_1.default.port}`.red.underline.bold);
+            console.log('db Connected successfully '.green.underline.bold);
+            server = app_1.default.listen(config_1.default.port, () => {
+                console.log(`server app listening on port ${config_1.default.port}`.green.bold);
             });
         }
         catch (error) {
-            index_1.default.env === 'production'
-                ? logger_1.errorLogger.error(`Failed to connect database: ${error}`.red.bold)
-                : console.log(`Failed to connect database: ${error}`.red.bold);
+            // const  {name,message,stack}=error;
+            console.log('failed to connect '.red.underline, error);
         }
         process.on('unhandledRejection', error => {
+            // eslint-disable-next-line no-console
+            console.log('UnHandle rejection is detected and closing the main() in serve.ts');
             if (server) {
                 server.close(() => {
-                    index_1.default.env === 'production'
-                        ? logger_1.errorLogger.error(error)
-                        : console.log(error);
+                    console.log(error);
                     process.exit(1);
                 });
             }
@@ -66,12 +55,11 @@ function connection() {
         });
     });
 }
-connection();
 process.on('SIGTERM', () => {
-    // logger.info('SIGTERM is received ....');
-    console.log('SIGTERM is received ....');
+    console.log('SIGTERM is received ');
     if (server) {
         server.close();
     }
 });
 // console.log(config.port,"url".green.bold);
+mainFUnction();

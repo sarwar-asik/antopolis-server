@@ -22,22 +22,11 @@ const routes_1 = __importDefault(require("./app/routes"));
 const sendResponce_1 = __importDefault(require("./shared/sendResponce"));
 // import { generateFacultyId } from './app/modules/users/user.utils';
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
-const config_1 = __importDefault(require("./config"));
 const image_controller_1 = require("./app/modules/Image/image.controller");
 // import { createUser } from './app/modules/users/users.services'
 const app = (0, express_1.default)();
 // const port = 3000
-app.use((0, cors_1.default)({
-    origin: config_1.default.env === 'development'
-        ? [
-            'http://localhost:3000',
-            'http://127.0.0.1:3000',
-            'http://192.168.0.101:3000',
-        ]
-        : [''],
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
-}));
+app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 app.use((0, cookie_parser_1.default)());
 app.use(express_1.default.urlencoded({ extended: true }));
