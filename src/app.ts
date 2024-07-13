@@ -29,7 +29,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //*** */ or ***////
 app.use('/api/v1', routes);
-app.use('/image/:id', ImageController.getImageUrl);
+// app.use('/image/:id', ImageController.getImageUrl);
 
 app.get('/', async (req: Request, res: Response) => {
   //  const addUser = await createUser({id:"445",role:"admin",password:"asdfasdf"})
@@ -39,7 +39,7 @@ app.get('/', async (req: Request, res: Response) => {
   // Promise.reject(new Error('Unhandle Promise from app.ts'))
 
   // throw new Error("Error from app.get")
-  // next("next error")
+  // next("next error");
   sendResponse(res, {
     success: true,
     message: 'Running the Antopolis server',
