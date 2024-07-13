@@ -45,7 +45,7 @@ app.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     // next("next error")
     (0, sendResponce_1.default)(res, {
         success: true,
-        message: 'Running the Sarwar server',
+        message: 'Running the Antopolis server',
         statusCode: 201,
         data: null,
     });
@@ -71,9 +71,9 @@ app.use((req, res, next) => {
 //   code: '01',
 //   year: '2025',
 // };
-const testId = () => __awaiter(void 0, void 0, void 0, function* () {
-    // const testId = await generateFacultyId();
-    console.log(testId, 'testId from app.ts');
-});
-testId();
+// const testId = async () => {
+//   // const testId = await generateFacultyId();
+//   console.log(testId, 'testId from app.ts');
+// };
+// testId();
 exports.default = app;

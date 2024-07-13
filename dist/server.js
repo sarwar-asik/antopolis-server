@@ -24,7 +24,7 @@ process.on('uncaughtException', err => {
     process.exit(1);
 });
 let server;
-console.log(config_1.default.database_url, 'config file Data'.red.bold);
+// console.log(config.database_url, 'config file Data'.red.bold);
 function mainFUnction() {
     return __awaiter(this, void 0, void 0, function* () {
         try {

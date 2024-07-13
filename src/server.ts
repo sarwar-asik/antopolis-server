@@ -14,7 +14,7 @@ process.on('uncaughtException', err => {
 
 let server: Server;
 
-console.log(config.database_url, 'config file Data'.red.bold);
+// console.log(config.database_url, 'config file Data'.red.bold);
 
 async function mainFUnction() {
   try {
