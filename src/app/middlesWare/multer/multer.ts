@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import multer from 'multer';
 import fs from 'fs';
 import path from 'path';
@@ -14,10 +15,10 @@ if (!fs.existsSync(uploadDestination)) {
 }
 
 const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
+  destination: function (req: any, file: any, cb: any) {
     cb(null, uploadDestination);
   },
-  filename: function (req, file, cb) {
+  filename: function (req: any, file: any, cb: any) {
     const extName = path.extname(file.originalname);
     const fileName =
       file.originalname
