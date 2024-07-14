@@ -36,7 +36,8 @@ async function mainFUnction() {
     // eslint-disable-next-line no-console
     console.log(
       'UnHandle rejection is detected and closing the main() in serve.ts',
-      error
+      error,
+      'close error'
     );
     if (server) {
       server.close(() => {
