@@ -1,3 +1,4 @@
+import path  from 'path';
 /* eslint-disable no-console */
 import httpStatus from 'http-status';
 // const express = require('express')
@@ -44,6 +45,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //*** */ or ***////
 app.use('/api/v1', routes);
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // app.use('/image/:id', ImageController.getImageUrl);
 
 app.get('/', async (req: Request, res: Response) => {
