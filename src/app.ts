@@ -28,7 +28,7 @@ app.use(
             'http://192.168.0.101:3000',
             'https://antp-animal.netlify.app',
           ]
-        : ['https://antp-animal.netlify.app'],
+        : ['https://antp-animal.netlify.app', 'http://localhost:3000'],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
   })
