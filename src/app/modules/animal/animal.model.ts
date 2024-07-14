@@ -5,7 +5,7 @@ import { model } from 'mongoose';
 const AnimalSchema: Schema<IAnimal> = new Schema<IAnimal>(
   {
     title: { type: String, required: true },
-    img: { type: String, required: true },
+    img: { type: String },
     category_id: {
       type: Schema.Types.ObjectId,
       ref: 'Category',

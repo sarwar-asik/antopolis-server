@@ -15,7 +15,9 @@ const create_animal = async (req: Request, res: Response) => {
     const uploadResult = await uploadOnCloudinary(req.file.path);
     // console.log("🚀  constcreate_animal= ~ uploadResult:", uploadResult)
     if (uploadResult) {
-      profileImageUrl = uploadResult.secure_url;
+      profileImageUrl =
+        uploadResult?.secure_url ??
+        'https://res.cloudinary.com/dwaiudyzc/image/upload/v1720951130/rcaye4nngpgnkfno3bc5.png';
     }
   }
   if (profileImageUrl) {
