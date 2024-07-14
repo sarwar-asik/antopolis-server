@@ -4,11 +4,13 @@ import { Router } from 'express';
 import { AnimalController } from './animal.controller';
 import { AnimalValidation } from './animal.validation';
 import validateRequest from '../../middlesWare/validateUserRequest';
+import upload from '../../middlesWare/multer/multer';
 const router = Router();
 router
   .route('/')
   .get(AnimalController.get_all_animal)
   .post(
+    upload.single('image'),
     validateRequest(AnimalValidation.create_Animal),
     AnimalController.create_animal
   );

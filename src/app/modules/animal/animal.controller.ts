@@ -2,9 +2,25 @@ import { Request, Response } from 'express';
 import { AnimalService } from './animal.service';
 import sendResponse from '../../../shared/sendResponce';
 import httpStatus from 'http-status';
+import { uploadOnCloudinary } from '../../middlesWare/cloudinary/cloudinary';
 
 const create_animal = async (req: Request, res: Response) => {
-  const { ...animalData } = req.body;
+  const animalData = req.body;
+
+  let profileImageUrl: string | undefined;
+
+  // eslint-disable-next-line no-console
+  // console.log(req.file, 'req.file');
+  if (req.file) {
+    const uploadResult = await uploadOnCloudinary(req.file.path);
+    // console.log("🚀  constcreate_animal= ~ uploadResult:", uploadResult)
+    if (uploadResult) {
+      profileImageUrl = uploadResult.secure_url;
+    }
+  }
+  if (profileImageUrl) {
+    animalData.img = profileImageUrl;
+  }
   const response = await AnimalService.create_animal_db(animalData);
 
   if (response) {

@@ -8,17 +8,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __rest = (this && this.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -27,8 +16,22 @@ exports.AnimalController = void 0;
 const animal_service_1 = require("./animal.service");
 const sendResponce_1 = __importDefault(require("../../../shared/sendResponce"));
 const http_status_1 = __importDefault(require("http-status"));
+const cloudinary_1 = require("../../middlesWare/cloudinary/cloudinary");
 const create_animal = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const animalData = __rest(req.body, []);
+    const animalData = req.body;
+    let profileImageUrl;
+    // eslint-disable-next-line no-console
+    // console.log(req.file, 'req.file');
+    if (req.file) {
+        const uploadResult = yield (0, cloudinary_1.uploadOnCloudinary)(req.file.path);
+        // console.log("🚀  constcreate_animal= ~ uploadResult:", uploadResult)
+        if (uploadResult) {
+            profileImageUrl = uploadResult.secure_url;
+        }
+    }
+    if (profileImageUrl) {
+        animalData.img = profileImageUrl;
+    }
     const response = yield animal_service_1.AnimalService.create_animal_db(animalData);
     if (response) {
         (0, sendResponce_1.default)(res, {

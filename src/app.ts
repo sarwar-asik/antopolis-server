@@ -10,14 +10,28 @@ import routes from './app/routes';
 import sendResponse from './shared/sendResponce';
 // import { generateFacultyId } from './app/modules/users/user.utils';
 import cookieParser from 'cookie-parser';
-import { ImageController } from './app/modules/Image/image.controller';
+import config from './config';
+// import { ImageController } from './app/modules/Image/image.controller';
 
 // import { createUser } from './app/modules/users/users.services'
 
 const app: Application = express();
 // const port = 3000
 
-app.use(cors());
+app.use(
+  cors({
+    origin:
+      config.env === 'development'
+        ? [
+            'http://localhost:3000',
+            'http://127.0.0.1:3000',
+            'http://192.168.0.101:3000',
+          ]
+        : ['https://antp-animal.netlify.app'],
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+  })
+);
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
